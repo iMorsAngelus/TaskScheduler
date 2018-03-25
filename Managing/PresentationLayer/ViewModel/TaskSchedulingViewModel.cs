@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Managing.BusinessLogicLayer;
+using Managing.DataAccessLayer;
+using System;
+using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Managing.Common.Extension;
 
 namespace Managing.PresentationLayer.ViewModel
 {
@@ -10,19 +14,28 @@ namespace Managing.PresentationLayer.ViewModel
         #region private fields
 
         private const int HideMessageTimeOutInSecond = 5;
+        private ITaskController _taskController;
+        private IFileProvider _fileProvider;
         private string _statusMessage;
         private Visibility _statusMessageIsVisible = Visibility.Hidden;
+        //private ObservableCollection<ScheduleTask> _tasks;
 
         #endregion
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskSchedulingViewModel"/> class.        
         /// </summary>
-        public TaskSchedulingViewModel()
+        public TaskSchedulingViewModel(ITaskController taskController, IFileProvider fileProvider)
         {
-            this.DisplayName = "Task scheduling";
+            taskController.ThrowIfNull(nameof(taskController));
+            fileProvider.ThrowIfNull(nameof(fileProvider));
+
+            this.DisplayName = "ScheduleTask scheduling";
+            _taskController = taskController;
+            _fileProvider = fileProvider;
             //Events subscribe
         }
 
+        public ObservableCollection<ScheduleTask> Tasks { get; set; }
         public string StatusMessage
         {
             get => _statusMessage;

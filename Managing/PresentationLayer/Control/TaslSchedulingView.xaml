@@ -21,33 +21,40 @@
                     Grid.Row="0"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center">
-                <Button Width="80"
+                <Button Width="120"
                     Height="30"
-                    Content="Add task"
+                    Content="Add scheduleTask"
                     Margin="0,15,0,0" 
                     VerticalAlignment="Top"/>
                 <!--Command="{Binding Path=BmClickCommand}"/-->
-                <Button Width="80"
+                <Button Width="120"
                     Height="30"
-                    Content="Remove task"
+                    Content="Remove scheduleTask"
                     Margin="0,15,0,0" 
                     VerticalAlignment="Top"/>
                 <!--Command="{Binding Path=BmClickCommand}"/-->
-                <Button Width="80"
+                <Button Width="120"
                     Height="30"
-                    Content="Edit task"
+                    Content="Edit scheduleTask"
                     Margin="0,15,0,0" 
                     VerticalAlignment="Top"/>
                 <!--Command="{Binding Path=BmClickCommand}"/-->
-                <Button Width="80"
+                <Button Width="120"
                     Height="30"
-                    Content="Task details"
+                    Content="ScheduleTask details"
                     Margin="0,15,0,0" 
                     VerticalAlignment="Top"/>
                 <!--Command="{Binding Path=BmClickCommand}"/-->
             </StackPanel>
             <DataGrid Grid.Column="1" 
-                Grid.Row="0">
+                Grid.Row="0"
+                ItemsSource="{Binding Tasks}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Path=TaskName, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="StartDate" Width="*" Binding="{Binding Path=StartDate, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="Start time" Width="*" Binding="{Binding Path=StarTime, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="Pereodicity" Width="*" Binding="{Binding Path=RepeatableIntervalInDays, UpdateSourceTrigger=PropertyChanged}" />
+                </DataGrid.Columns>
             </DataGrid>
             <Label Grid.Row="1"
                 Grid.Column="0"

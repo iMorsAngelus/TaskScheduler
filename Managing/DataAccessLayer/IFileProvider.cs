@@ -9,7 +9,7 @@
         /// Loaad object from binary file
         /// </summary>
         /// <param name="path">path to </param>
-        /// <returns>Loaded object</returns>
+        /// <returns>Canceled object</returns>
         T Load<T>(string path);
         /// <summary>
         /// Save object to binary file

@@ -9,11 +9,18 @@ namespace Managing.PresentationLayer.ViewModel
     class MainWindowViewModel : ViewModelBase
     {
         #region private fields
-
         private List<ViewModelBase> _viewModelsList;
-
         #endregion
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.        
+        /// </summary>
+        /// <param name="viewModelList"></param>
+        public MainWindowViewModel(List<ViewModelBase> viewModelList)
+        {
+            ViewModelsList = viewModelList;
+        }
+        
         /// <summary>
         /// ViewModelsList of applications.
         /// </summary>
@@ -25,15 +32,6 @@ namespace Managing.PresentationLayer.ViewModel
                 _viewModelsList = value;
                 OnPropertyChanged();
             }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.        
-        /// </summary>
-        /// <param name="viewModel"></param>
-        public MainWindowViewModel(ViewModelBase viewModel)
-        {
-            ViewModelsList = new List<ViewModelBase> { viewModel };
         }
     }
 }

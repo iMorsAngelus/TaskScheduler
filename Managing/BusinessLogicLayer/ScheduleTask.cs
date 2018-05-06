@@ -8,9 +8,9 @@ namespace Managing.BusinessLogicLayer
         private string _taskName;
         private string _taskArgs;
         private string _taskLocation;
-        private TimeSpan _starTime;
-        private DateTime _startDate;
-        private bool _isRepeatable;
+        private TimeSpan _starTime;// = DateTime.Now.TimeOfDay;
+        private DateTime _startDate = DateTime.Today.Date;
+        private bool _isRepeatable = false;
         private int _repeatableIntervalInDays;
         private DateTime? _lastRunDate;
 
@@ -59,7 +59,7 @@ namespace Managing.BusinessLogicLayer
             get => _startDate;
             set
             {
-                _startDate = value;
+                _startDate = value.Date;
                 OnPropertyChanged();
             }
         }
@@ -91,12 +91,12 @@ namespace Managing.BusinessLogicLayer
             set
             {
                 _lastRunDate = value;
-                identifyStartTaskDate();
+                IdentifyStartTaskDate();
                 OnPropertyChanged();
             }
         }
 
-        private void identifyStartTaskDate()
+        private void IdentifyStartTaskDate()
         {
             if (IsRepeatable && LastRunDate.HasValue)
             {

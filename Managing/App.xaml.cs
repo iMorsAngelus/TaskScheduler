@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using log4net;
 using Managing.BusinessLogicLayer;
@@ -26,8 +27,11 @@ namespace Managing
 
             var fileProvider = new FileProvider();
             var taskController = new TaskController(fileProvider);
+
             var taskSchedulingViewModel = new TaskSchedulingViewModel(taskController, fileProvider);
-            var mainWindowViewModel = new MainWindowViewModel(taskSchedulingViewModel);
+            var viewModelList = new List<ViewModelBase> {taskSchedulingViewModel};
+
+            var mainWindowViewModel = new MainWindowViewModel(viewModelList);
             var mainWindow = new MainWindow {DataContext = mainWindowViewModel};
 
             Log.Info("Initialize is successful");

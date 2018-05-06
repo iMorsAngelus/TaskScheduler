@@ -11,6 +11,6 @@
         Height="500" 
         Width="500">
     <Grid>
-        <control:TaslSchedulingView DataContext="{Binding ViewModelsList[0]}" />
+        <control:TaskSchedulingView DataContext="{Binding ViewModelsList[0]}" />
     </Grid>
 </Window>

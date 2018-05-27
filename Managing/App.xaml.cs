@@ -4,6 +4,7 @@ using System.Windows;
 using log4net;
 using Managing.BusinessLogicLayer;
 using Managing.DataAccessLayer;
+using Managing.PresentationLayer;
 using Managing.PresentationLayer.ViewModel;
 
 namespace Managing
@@ -25,10 +26,11 @@ namespace Managing
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             base.OnStartup(e);
 
+            var fileDialog = new FileDialog();
             var fileProvider = new FileProvider();
             var taskController = new TaskController(fileProvider);
 
-            var taskSchedulingViewModel = new TaskSchedulingViewModel(taskController, fileProvider);
+            var taskSchedulingViewModel = new TaskSchedulingViewModel(taskController, fileProvider, fileDialog);
             var viewModelList = new List<ViewModelBase> {taskSchedulingViewModel};
 
             var mainWindowViewModel = new MainWindowViewModel(viewModelList);

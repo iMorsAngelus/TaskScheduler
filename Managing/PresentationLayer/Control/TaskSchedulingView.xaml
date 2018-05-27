@@ -9,13 +9,13 @@
              x:Shared="False"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid Visibility="{Binding ShowTaskView, Converter={converter:BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged}" >
+        <Grid Visibility="{Binding ShowTaskView, Converter={converter:BoolToVisConverter}, FallbackValue=Hidden, UpdateSourceTrigger=PropertyChanged}" >
             <control:TaskView DataContext="{Binding TaskViewModel, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
-        <Grid Visibility="{Binding ShowTaskSchedulingView, Converter={converter:BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged}" >
+        <Grid Visibility="{Binding ShowTaskSchedulingView, Converter={converter:BoolToVisConverter}, FallbackValue=Visibly , UpdateSourceTrigger=PropertyChanged}" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
@@ -26,33 +26,40 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center">
                 <Button Width="120"
+                        Height="30"
+                        Content="Load tasks"
+                        Margin="0,15,0,0" 
+                        VerticalAlignment="Top"
+                        Command="{Binding LoadTasksCommand}"/>
+                <Button Width="120"
+                        Height="30"
+                        Content="Save tasks"
+                        Margin="0,15,0,0" 
+                        VerticalAlignment="Top"
+                        Command="{Binding SaveTasksCommand}"/>
+                <Button Width="120"
                     Height="30"
-                    Content="Add scheduleTask"
+                    Content="Add task"
                     Margin="0,15,0,0" 
                     VerticalAlignment="Top"
                     Command="{Binding AddTaskCommand}"/>
                 <Button Width="120"
                     Height="30"
-                    Content="Remove scheduleTask"
+                    Content="Remove task"
                     Margin="0,15,0,0" 
                     VerticalAlignment="Top"
                     Command="{Binding RemoveTaskCommand}"/>
                 <Button Width="120"
                     Height="30"
-                    Content="Edit scheduleTask"
+                    Content="Edit task"
                     Margin="0,15,0,0" 
                     VerticalAlignment="Top"
                     Command="{Binding EditTaskCommand}"/>
-                <Button Width="120"
-                    Height="30"
-                    Content="ScheduleTask details"
-                    Margin="0,15,0,0" 
-                    VerticalAlignment="Top"
-                    Command="{Binding ShowTaskDetailsCommand}"/>
             </StackPanel>
             <DataGrid Grid.Column="1" 
                       Grid.Row="0"
                       ItemsSource="{Binding Tasks, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged}"
                       AutoGenerateColumns="False" 
                       Margin="10" 
                       AlternatingRowBackground="LightGray"  
@@ -75,13 +82,11 @@
             </DataGrid>
             <Label Grid.Row="1"
                 Grid.Column="0"
-                Grid.ColumnSpan="2" 
-                Height="50"
+                Grid.ColumnSpan="2"
                 FontSize="20"
                 Foreground="Black"
-                Background="Aqua"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Center"
                 Content="{Binding StatusMessage, 
                             UpdateSourceTrigger=PropertyChanged, 
                             Mode=OneWay}"

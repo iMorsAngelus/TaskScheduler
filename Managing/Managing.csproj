@@ -87,9 +87,9 @@
     <Compile Include="BusinessLogicLayer\ITaskController.cs" />
     <Compile Include="BusinessLogicLayer\TaskController.cs" />
     <Compile Include="Common\Extension\ObjectExtensions.cs" />
-    <Compile Include="Common\IDispatcherInvoker.cs" />
-    <Compile Include="Common\WpfUiThreadInvoker.cs" />
+    <Compile Include="PresentationLayer\FileDialog.cs" />
     <Compile Include="DataAccessLayer\FileProvider.cs" />
+    <Compile Include="PresentationLayer\IFileDialog.cs" />
     <Compile Include="DataAccessLayer\IFileProvider.cs" />
     <Compile Include="BusinessLogicLayer\ScheduleTask.cs" />
     <Compile Include="MainWindow.xaml.cs">

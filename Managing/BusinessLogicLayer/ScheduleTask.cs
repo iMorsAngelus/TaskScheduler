@@ -3,17 +3,24 @@ using Managing.PresentationLayer;
 
 namespace Managing.BusinessLogicLayer
 {
+    /// <summary>
+    /// Represent data model of task.
+    /// </summary>
+    [Serializable]
     public class ScheduleTask : NotifyPropertyChanged
     {
         private string _taskName;
         private string _taskArgs;
         private string _taskLocation;
-        private TimeSpan _starTime;// = DateTime.Now.TimeOfDay;
+        private TimeSpan _starTime;
         private DateTime _startDate = DateTime.Today.Date;
         private bool _isRepeatable = false;
         private int _repeatableIntervalInDays;
         private DateTime? _lastRunDate;
 
+        /// <summary>
+        /// Task name.
+        /// </summary>
         public string TaskName
         {
             get => _taskName;
@@ -23,7 +30,9 @@ namespace Managing.BusinessLogicLayer
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Tasks arguments.
+        /// </summary>
         public string TaskArgs
         {
             get => _taskArgs;
@@ -33,7 +42,9 @@ namespace Managing.BusinessLogicLayer
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Location of task.
+        /// </summary>
         public string TaskLocation
         {
             get => _taskLocation;
@@ -43,7 +54,9 @@ namespace Managing.BusinessLogicLayer
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Start time.
+        /// </summary>
         public TimeSpan StarTime
         {
             get => _starTime;
@@ -53,7 +66,9 @@ namespace Managing.BusinessLogicLayer
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Start date.
+        /// </summary>
         public DateTime StartDate
         {
             get => _startDate;
@@ -63,7 +78,9 @@ namespace Managing.BusinessLogicLayer
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Indicate necessity repeatable
+        /// </summary>
         public bool IsRepeatable
         {
             get => _isRepeatable;
@@ -73,7 +90,9 @@ namespace Managing.BusinessLogicLayer
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Repeatable interval in days
+        /// </summary>
         public int RepeatableIntervalInDays
         {
             get => _repeatableIntervalInDays;
@@ -84,7 +103,9 @@ namespace Managing.BusinessLogicLayer
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Indicate last run date.
+        /// </summary>
         public DateTime? LastRunDate
         {
             get => _lastRunDate;

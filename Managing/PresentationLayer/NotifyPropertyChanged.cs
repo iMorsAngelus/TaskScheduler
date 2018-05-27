@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Managing.PresentationLayer
@@ -6,11 +7,13 @@ namespace Managing.PresentationLayer
     /// <summary>
     /// Class, who implement INotifyPropertyChanged interface.
     /// </summary>
+    [Serializable]
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
         #region INotifyPropertyChanged Members
